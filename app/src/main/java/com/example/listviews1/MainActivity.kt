@@ -16,18 +16,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val listView = findViewById<ListView>(R.id.listView)
-        val names = arrayOf("Burrito Bowl", "Burrito", "Quesadilla", "Tacos", "Chips", "Salsa")
+        //val names = arrayOf("Burrito Bowl", "Burrito", "Quesadilla", "Tacos", "Chips", "Salsa")
 
-        val arrayAdapter:ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, names)
+        val list = ArrayList<Model>()
 
-        listView.adapter = arrayAdapter
+        list.add(Model("BellaPippin", "This is my bio", R.drawable.ic_launcher_background))
 
-        listView.setOnItemClickListener { adapterView, view, i, l ->
-            Toast.makeText(this, "Item selected " + names[i], Toast.LENGTH_LONG)
-                .show()
-            }
-        }
+        //val arrayAdapter:ArrayAdapter<String> = ArrayAdapter(
+        //this, android.R.layout.simple_list_item_1, names)
+
+        listView.adapter = MyCustomAdapter(this, R.layout.custom_layout_item, list)
 
 
     }
+}
